@@ -1,0 +1,41 @@
+# social-media-post-scheduler
+
+    import time
+    
+    def display_menu():
+        print("1.ADD POST")
+        print("2.START SCHEDULER")
+        print("3.EXIT")
+        
+    def add_post(posts):
+        message = input("ENTER THE POST MESSAGE :")
+        delay = int(input("ENTER TIME DELAY IN SECONDS (WHEN TO POST):"))
+        posts.append((message,delay))
+        print(f"POST ADDED : '{message}' WILL BE POSTED AFTER {delay} SECONDS .")
+        
+    def schedule(posts):
+        for post in posts:
+            message,delay = post   
+            print(f"WAITING {delay} SECONDS TO POST : '{message}'")
+            time.sleep(delay)
+            print(f"POSTED : {message}")
+            print("-" * 30)
+            
+    def main():
+        posts = []
+        while True:
+            display_menu()
+            choice = input("ENTER THE CHOICE : ") 
+            if choice == '1':
+                add_post(posts)
+            elif choice == '2':
+                schedule(posts)
+            elif choice == '3':
+                print("Existing....")
+                break
+            else:
+                print("Invalid choice,please try again") 
+                
+    if __name__ == "__main__":
+        main()    
+                            
